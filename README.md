@@ -1,5 +1,5 @@
 # Status
-![Build Status](https://codeship.com/projects/37601470-cb27-0133-b906-266ee181f653/status?branch=master)
+![Build Status](https://codeship.com/projects/40f963a0-ffe5-0134-a631-32f3f6ee1f3c/status?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/mtakaki/dropwizard-admin-resource/badge.svg?branch=master)](https://coveralls.io/github/mtakaki/dropwizard-admin-resource?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/grade/b6b6a9a48d334299ab49f012643bc046)](https://www.codacy.com/app/mitsuotakaki/dropwizard-hikaricp)
 [![Download](https://maven-badges.herokuapp.com/maven-central/com.github.mtakaki/dropwizard-admin-resource/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.mtakaki/dropwizard-admin-resource)
