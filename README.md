@@ -8,7 +8,12 @@
 # dropwizard-admin-resource
 This library provides the ability to register Jersey resources to the admin port.
 
-Currently supporting dropwizard version `1.1.0`.
+Supported versions:
+
+| Dropwizard  |  Admin resource |
+|---|---|
+| 1.1.0  | 1.1.0  |
+| 1.1.4  | 1.1.4  |
 
 ## Maven
 
@@ -19,7 +24,7 @@ The library is available at the maven central, so just add dependency to `pom.xm
   <dependency>
     <groupId>com.github.mtakaki</groupId>
     <artifactId>dropwizard-admin-resource</artifactId>
-    <version>1.1.0</version>
+    <version>1.1.4</version>
   </dependency>
 </dependencies>
 ```
@@ -39,7 +44,12 @@ public class TestApplication extends Application<TestConfiguration> {
     @Override
     public void run(final TestConfiguration configuration, final Environment environment)
             throws Exception {
-        this.adminResource.getJerseyEnvironment().register(new TestResource());
+        final JerseyEnvironment adminJerseyEnvironment = this.adminResourceBundle
+                .getJerseyEnvironment();
+        // Not necessary, but with this you can make sure you use the same settings
+        // of your jackson mapper settings for both jersey environments.
+        adminJerseyEnvironment.register(new JacksonBinder(environment.getObjectMapper()));
+        adminJerseyEnvironment.register(new TestResource());
     }
 }
 ```
