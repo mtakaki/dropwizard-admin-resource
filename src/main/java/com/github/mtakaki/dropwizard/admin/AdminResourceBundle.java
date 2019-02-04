@@ -11,7 +11,6 @@ import io.dropwizard.jersey.setup.JerseyContainerHolder;
 import io.dropwizard.jersey.setup.JerseyEnvironment;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -35,6 +34,7 @@ public class AdminResourceBundle implements Bundle {
 
     @Override
     public void initialize(final Bootstrap<?> bootstrap) {
+        // There's nothing really to do here.
     }
 
     @Override
@@ -56,7 +56,7 @@ public class AdminResourceBundle implements Bundle {
                 environment.metrics());
         final JerseyContainerHolder servletContainer = new JerseyContainerHolder(
                 new ServletContainer(jerseyConfig));
-        final JerseyEnvironment jerseyEnvironment = new JerseyEnvironment(servletContainer,
+        final JerseyEnvironment tempJerseyEnvironment = new JerseyEnvironment(servletContainer,
                 jerseyConfig);
 
         // Our resources will be under the base path.
@@ -64,10 +64,10 @@ public class AdminResourceBundle implements Bundle {
                 .addMapping(String.format("%s/*", this.basePath));
 
         // These are needed to hook up Timed, CircuitBreaker, etc.
-        jerseyEnvironment.register(
+        tempJerseyEnvironment.register(
                 new InstrumentedResourceMethodApplicationListener(environment.metrics()));
-        jerseyEnvironment.register(new RolesAllowedDynamicFeature());
+        tempJerseyEnvironment.register(new RolesAllowedDynamicFeature());
 
-        return jerseyEnvironment;
+        return tempJerseyEnvironment;
     }
 }
