@@ -22,7 +22,6 @@ import io.dropwizard.setup.Environment;
 import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import io.dropwizard.util.Duration;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -65,7 +64,7 @@ public class AdminResourceBundleIntegrationTest {
     }
 
     @Rule
-    public final DropwizardAppRule<TestConfiguration> RULE = new DropwizardAppRule<TestConfiguration>(
+    public final DropwizardAppRule<TestConfiguration> RULE = new DropwizardAppRule<>(
             TestApplication.class,
             ResourceHelpers.resourceFilePath("config.yml"));
 
