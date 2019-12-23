@@ -8,7 +8,7 @@ public class DropwizardAdminResourceConfig extends DropwizardResourceConfig {
     private static final String NEWLINE = String.format("%n");
 
     public DropwizardAdminResourceConfig(final MetricRegistry metricRegistry) {
-        super(false, metricRegistry);
+        super(metricRegistry);
     }
 
     @Override
