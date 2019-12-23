@@ -16,6 +16,7 @@ Supported versions:
 | 1.1.4  | 1.1.4  |
 | 1.2.2  | 1.2.2  |
 | 1.3.8  | 1.3.8  |
+| 2.0.0  | 2.0.0  |
 
 ## Maven
 
@@ -26,7 +27,7 @@ The library is available at the maven central, so just add dependency to `pom.xm
   <dependency>
     <groupId>com.github.mtakaki</groupId>
     <artifactId>dropwizard-admin-resource</artifactId>
-    <version>1.3.8</version>
+    <version>2.0.0</version>
   </dependency>
 </dependencies>
 ```

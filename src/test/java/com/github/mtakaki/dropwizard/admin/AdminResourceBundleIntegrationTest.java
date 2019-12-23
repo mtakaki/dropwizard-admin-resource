@@ -6,26 +6,23 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.client.Client;
 import javax.ws.rs.core.MediaType;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
-import io.dropwizard.client.JerseyClientBuilder;
-import io.dropwizard.client.JerseyClientConfiguration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import io.dropwizard.testing.ResourceHelpers;
-import io.dropwizard.testing.junit.DropwizardAppRule;
-import io.dropwizard.util.Duration;
+import io.dropwizard.testing.DropwizardTestSupport;
+import io.dropwizard.testing.junit5.DropwizardAppExtension;
+import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@ExtendWith(DropwizardExtensionsSupport.class)
 public class AdminResourceBundleIntegrationTest {
     public static class TestConfiguration extends Configuration {
     }
@@ -63,27 +60,15 @@ public class AdminResourceBundleIntegrationTest {
         }
     }
 
-    @Rule
-    public final DropwizardAppRule<TestConfiguration> RULE = new DropwizardAppRule<>(
-            TestApplication.class,
-            ResourceHelpers.resourceFilePath("config.yml"));
-
-    private Client client;
-
-    @Before
-    public void createClient() {
-        final JerseyClientConfiguration configuration = new JerseyClientConfiguration();
-        configuration.setTimeout(Duration.minutes(1L));
-        configuration.setConnectionTimeout(Duration.minutes(1L));
-        configuration.setConnectionRequestTimeout(Duration.minutes(1L));
-        this.client = new JerseyClientBuilder(this.RULE.getEnvironment()).using(configuration)
-                .build("test client");
-    }
+    private static final DropwizardTestSupport<TestConfiguration> TEST_SUPPORT = new DropwizardTestSupport<>(
+            TestApplication.class, new TestConfiguration());
+    private static final DropwizardAppExtension<TestConfiguration> DROPWIZARD = new DropwizardAppExtension<>(
+            TEST_SUPPORT);
 
     @Test
     public void testGetAdmin() {
-        final Model model = this.client
-                .target(String.format("http://localhost:%d/admin/test", this.RULE.getAdminPort()))
+        final Model model = DROPWIZARD.client()
+                .target(String.format("http://localhost:%d/admin/test", DROPWIZARD.getAdminPort()))
                 .request().get(Model.class);
         assertThat(model).isEqualTo(new Model(1, "me"));
     }
