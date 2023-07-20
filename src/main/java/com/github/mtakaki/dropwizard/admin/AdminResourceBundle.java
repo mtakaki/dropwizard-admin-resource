@@ -1,16 +1,16 @@
 package com.github.mtakaki.dropwizard.admin;
 
+import io.dropwizard.core.ConfiguredBundle;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import com.codahale.metrics.jersey2.InstrumentedResourceMethodApplicationListener;
 
-import io.dropwizard.Bundle;
 import io.dropwizard.jersey.DropwizardResourceConfig;
 import io.dropwizard.jersey.setup.JerseyContainerHolder;
 import io.dropwizard.jersey.setup.JerseyEnvironment;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
  * @author mtakaki
  */
 @RequiredArgsConstructor
-public class AdminResourceBundle implements Bundle {
+public class AdminResourceBundle<T> implements ConfiguredBundle<T> {
     private final String basePath;
     @Getter
     private JerseyEnvironment jerseyEnvironment;
@@ -38,7 +38,7 @@ public class AdminResourceBundle implements Bundle {
     }
 
     @Override
-    public void run(final Environment environment) {
+    public void run(final T config, final Environment environment) {
         this.jerseyEnvironment = this.setupAdminEnvironment(environment);
     }
 

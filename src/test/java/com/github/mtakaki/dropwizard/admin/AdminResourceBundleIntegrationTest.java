@@ -11,10 +11,10 @@ import javax.ws.rs.core.MediaType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-import io.dropwizard.Application;
-import io.dropwizard.Configuration;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
+import io.dropwizard.core.Application;
+import io.dropwizard.core.Configuration;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 import io.dropwizard.testing.DropwizardTestSupport;
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
@@ -46,7 +46,7 @@ public class AdminResourceBundleIntegrationTest {
     }
 
     public static class TestApplication extends Application<TestConfiguration> {
-        private final AdminResourceBundle adminResource = new AdminResourceBundle();
+        private final AdminResourceBundle<TestConfiguration> adminResource = new AdminResourceBundle<>();
 
         @Override
         public void initialize(final Bootstrap<TestConfiguration> bootstrap) {

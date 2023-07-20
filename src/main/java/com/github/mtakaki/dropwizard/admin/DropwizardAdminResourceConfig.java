@@ -4,9 +4,16 @@ import com.codahale.metrics.MetricRegistry;
 
 import io.dropwizard.jersey.DropwizardResourceConfig;
 
+/**
+ * Configuration for Jersey servlet hosting the admin endpoint
+ */
 public class DropwizardAdminResourceConfig extends DropwizardResourceConfig {
     private static final String NEWLINE = String.format("%n");
 
+    /**
+     * Constructor
+     * @param metricRegistry Dropwizard metrics registry
+     */
     public DropwizardAdminResourceConfig(final MetricRegistry metricRegistry) {
         super(metricRegistry);
     }
