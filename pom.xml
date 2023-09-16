@@ -3,7 +3,7 @@
 
     <groupId>com.github.mtakaki</groupId>
     <artifactId>dropwizard-admin-resource</artifactId>
-    <version>2.0.10-SNAPSHOT</version>
+    <version>4.0.1</version>
     <packaging>jar</packaging>
 
     <name>Dropwizard Admin Resource</name>
@@ -40,7 +40,7 @@
         <connection>scm:git:https://github.com/mtakaki/dropwizard-admin-resource.git</connection>
         <developerConnection>scm:git:git@github.com:mtakaki/dropwizard-admin-resource.git</developerConnection>
         <url>https://github.com/mtakaki/dropwizard-admin-resource</url>
-        <tag>HEAD</tag>
+        <tag>4.0.1</tag>
     </scm>
 
     <distributionManagement>
