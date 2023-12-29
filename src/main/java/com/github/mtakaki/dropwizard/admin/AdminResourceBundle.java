@@ -1,16 +1,16 @@
 package com.github.mtakaki.dropwizard.admin;
 
-import io.dropwizard.core.ConfiguredBundle;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import com.codahale.metrics.jersey3.InstrumentedResourceMethodApplicationListener;
 
+import io.dropwizard.core.ConfiguredBundle;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 import io.dropwizard.jersey.DropwizardResourceConfig;
 import io.dropwizard.jersey.setup.JerseyContainerHolder;
 import io.dropwizard.jersey.setup.JerseyEnvironment;
-import io.dropwizard.core.setup.Bootstrap;
-import io.dropwizard.core.setup.Environment;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +18,7 @@ import lombok.RequiredArgsConstructor;
  * Bundle that gives the ability to register resources under the admin port.
  *
  * @author mtakaki
+ * @param <T> The configuration class
  */
 @RequiredArgsConstructor
 public class AdminResourceBundle<T> implements ConfiguredBundle<T> {
