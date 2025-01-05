@@ -10,16 +10,19 @@ This library provides the ability to register Jersey resources to the admin port
 
 Supported versions:
 
-| Dropwizard  |  Admin resource |
-|---|---|
-| 1.1.0  | 1.1.0  |
-| 1.1.4  | 1.1.4  |
-| 1.2.2  | 1.2.2  |
-| 1.3.8  | 1.3.8  |
-| 2.0.0  | 2.0.0  |
-| 2.0.9  | 2.0.9  |
-| 4.0.1  | 4.0.1  |
-| 4.0.5  | 4.0.5  |
+| Dropwizard  |  Admin resource | Java version |
+|---|---| --- |
+| 1.1.0  | 1.1.0  | |
+| 1.1.4  | 1.1.4  | |
+| 1.2.2  | 1.2.2  | |
+| 1.3.8  | 1.3.8  | |
+| 2.0.0  | 2.0.0  | |
+| 2.0.9  | 2.0.9  | |
+| 4.0.1  | 4.0.1  | 11 |
+| 4.0.5  | 4.0.5  | 11 |
+| 4.0.11  | 4.0.11  | 21 |
+
+* Starting from version 4.0.11 this library is compiled with java 21.
 
 ## Maven
 
@@ -30,7 +33,7 @@ The library is available at the maven central, so just add dependency to `pom.xm
   <dependency>
     <groupId>com.github.mtakaki</groupId>
     <artifactId>dropwizard-admin-resource</artifactId>
-    <version>4.0.5</version>
+    <version>4.0.11</version>
   </dependency>
 </dependencies>
 ```
